@@ -1,0 +1,403 @@
+
+/* Para scoped, el selector * no es recomendado, pero puedes mantenerlo para los hijos del componente */
+:deep(*) {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Space Grotesk', 'Roboto', sans-serif;
+  color: #333;
+}
+
+/* Aquí no puedes usar body fijo en scoped, si quieres aplicar estilos globales a body, hazlo en styles.css global o con :deep() */
+:deep(body) {
+  font-family: 'Space Grotesk', 'Roboto', sans-serif;
+  color: #333;
+}
+
+.tarjeta-bienestar {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.tarjeta-bienestar:hover {
+  transform: scale(1.05);
+}
+
+/* Barra superior de navegación */
+.top-bar {
+  width: 100%;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  animation: slideDown 0.6s ease-out;
+}
+
+/* Enlaces dentro de la barra de autenticación */
+.top-bar .auth-links a {
+  text-decoration: none;
+  margin-left: 25px;
+  font-size: 17px;
+  position: relative;
+  transition: 0.3s;
+}
+
+.top-bar .auth-links a::after {
+  content: '';
+  height: 2px;
+  width: 0;
+  background: #00e5ff;
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  transition: 0.4s ease;
+}
+
+.top-bar .auth-links a:hover {
+  color: #00bcd4;
+}
+
+.top-bar .auth-links a:hover::after {
+  width: 100%;
+}
+
+/* Contenedor principal del contenido de la página */
+.content {
+  margin-top: 90px;
+  padding: 30px 20px;
+}
+
+body.form-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* No puedes usar body.form-page en scoped, hazlo con :deep */
+:deep(body.form-page) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+header {
+  background: url('https://www.transparenttextures.com/patterns/cubes.png'), #0984e3;
+  background-blend-mode: overlay;
+  color: white;
+  text-align: center;
+  padding: 2px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Barra de navegación debajo del header */
+nav {
+  background: #dff9fb;
+  padding: 1em;
+  text-align: center;
+}
+
+/* Enlaces de navegación */
+nav a {
+  margin: 10px;
+  color: #32402f;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #0984e3;
+}
+
+/* Secciones de contenido */
+section {
+  padding: 30px;
+  max-width: 900px;
+  margin: 30px auto;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+  transition: transform 0.3s ease;
+}
+
+section:hover {
+  transform: scale(1.01);
+}
+
+/* Títulos secundarios */
+h2 {
+  color: #00b894;
+  font-weight: 60;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+h2::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 4px;
+  background: #00cec9;
+  margin-top: 8px;
+  border-radius: 3px;
+}
+
+/* Tablas */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+table, th, td {
+  border: 1px solid #dcdde1;
+  padding: 12px;
+  text-align: left;
+}
+
+/* Cabecera de la tabla */
+th {
+  background-color: #74b9ff;
+  color: white;
+  font-weight: 600;
+}
+
+/* Formulario con estilo moderno */
+.login-container {
+  background: rgb(0, 0, 0);
+  padding: 35px 40px;
+  border-radius: 18px;
+  width: 340px;
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Estilos para inputs en formularios */
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+/* Botón de formulario */
+button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Efecto hover en el botón */
+button:hover {
+  background-color: #ecdfdf;
+}
+
+/* Estilo para mensajes de error */
+#message {
+  margin-top: 10px;
+}
+
+/* Estilo base para secciones */
+.section {
+  padding: 40px;
+  background-color: #f8f9fa;
+  animation: fadeInUp 1s ease forwards;
+  opacity: 0;
+}
+
+/* Animación de entrada */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Títulos principales */
+.section h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Párrafos centrales */
+.section p {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 30px;
+}
+
+/* Grid de tarjetas */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+/* Tarjeta individual */
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto hover en tarjetas */
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Imagen centrada */
+.section img.logo {
+  width: 100px;
+  height: auto;
+  display: block;
+  margin: 0 auto 20px;
+}
+
+.section img.main-image {
+  width: 100%;
+  max-width: 700px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  display: block;
+  margin: 40px auto;
+}
+
+.footer {
+  background-color: #121212;
+  color: #ddd;
+  padding: 50px 20px 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.footer-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.footer-about,
+.footer-contact,
+.footer-social {
+  flex: 1 1 280px;
+}
+
+.footer-about h3 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #4caf50;
+}
+
+.footer-about p {
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.footer-contact h4,
+.footer-social h4 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #4caf50;
+}
+
+.footer-contact p {
+  margin-bottom: 8px;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.social-icons {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.social-link {
+  color: #ddd;
+  transition: color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+
+.social-link svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+.social-link.facebook:hover {
+  color: #3b5998;
+}
+
+.social-link.instagram:hover {
+  color: #e1306c;
+}
+
+.social-link.twitter:hover {
+  color: #1da1f2;
+}
+
+.social-link.youtube:hover {
+  color: #ff0000;
+}
+
+.footer-bottom {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #777;
+  border-top: 1px solid #333;
+  padding-top: 15px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+}
+
+.social-link.twitter:hover {
+  background-color: #1da1f2;
+  color: white;
+  border-color: #1da1f2;
+}
+
+.social-link.youtube:hover {
+  background-color: #ff0000;
+  color: white;
+  border-color: #ff0000;
+}
